@@ -66,7 +66,7 @@ namespace Empresa.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao adicionar dados no banco de dados");
             }
         }
-        [HttpPut("{id:int}")]
+        [HttpPut("{DepId:int}")]
 
         public async Task<ActionResult<Departamento>> Updatedepartamento(int DepId, [FromBody] Departamento departamento)
         {
