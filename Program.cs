@@ -1,6 +1,7 @@
 using Empresa.Data;
 using Empresa.Reapository;
 using Empresa.Reapository.Interface;
+using Empresa.Repository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

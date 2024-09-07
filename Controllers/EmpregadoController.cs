@@ -61,14 +61,15 @@ namespace Empresa.Controllers
             }
         }
         [HttpPut("{id:int}")]
-        public async Task<ActionResult<Empregado>> UpdateEmrpegado([FromBody]Empregado empregado)
+        public async Task<ActionResult<Empregado>> UpdateEmrpegado(int EmpId, [FromBody]Empregado empregado)
         {
             try 
             {
-                var result = await empregadoRepository.GetEmpregado(empregado.EmpId);
+                empregado.EmpId = EmpId;
+                var result = await empregadoRepository.UpdateEmpregado(empregado);
                 if (result == null) return NotFound($"Empregado chamado = {empregado.Nome} não encontrado");
 
-                return await empregadoRepository.UpdateEmpregado(empregado);
+                return Ok(result);
             }
             catch (Exception)
             {

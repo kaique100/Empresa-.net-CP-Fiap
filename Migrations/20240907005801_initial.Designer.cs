@@ -11,8 +11,8 @@ using Oracle.EntityFrameworkCore.Metadata;
 namespace Empresa.Migrations
 {
     [DbContext(typeof(dbContext))]
-    [Migration("20240903180314_departamento")]
-    partial class departamento
+    [Migration("20240907005801_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,9 +52,6 @@ namespace Empresa.Migrations
                     b.Property<int>("DepId")
                         .HasColumnType("NUMBER(10)");
 
-                    b.Property<int>("DepartamentoDepId")
-                        .HasColumnType("NUMBER(10)");
-
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("NVARCHAR2(2000)");
@@ -76,20 +73,7 @@ namespace Empresa.Migrations
 
                     b.HasKey("EmpId");
 
-                    b.HasIndex("DepartamentoDepId");
-
                     b.ToTable("Empregados_PX");
-                });
-
-            modelBuilder.Entity("Empresa.Models.Empregado", b =>
-                {
-                    b.HasOne("Empresa.Models.Departamento", "Departamento")
-                        .WithMany()
-                        .HasForeignKey("DepartamentoDepId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Departamento");
                 });
 #pragma warning restore 612, 618
         }
